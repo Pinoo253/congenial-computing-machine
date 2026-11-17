@@ -1,0 +1,10 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADB CREATIVE TEAM</title><link rel="stylesheet" href="style.css"></head><body>
+<section class="hero"><h1>ADB CREATIVE TEAM</h1><p>Wadah kreativitas, karya, dan prestasi anggota ekstrakurikuler.</p></section>
+<section class="grid" id="stats"></section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.47.10/dist/umd/supabase.min.js"></script><script src="app.js"></script>
+<script>
+(async()=>{const t=[["activities","Kegiatan"],["projects","Proyek"],["gallery","Galeri"],["achievements","Prestasi"]];
+const el=document.getElementById("stats");
+for(const [k,l] of t){const {count}=await db.from(k).select("*",{count:"exact",head:true}).eq("published",true);
+el.insertAdjacentHTML("beforeend",`<div class="card c"><b>${count??0}</b>${l}</div>`)}})();
+</script></body></html>
